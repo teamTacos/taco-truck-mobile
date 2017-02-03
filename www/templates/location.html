@@ -1,0 +1,14 @@
+<br><br><br>
+<h1>Woot! {{location}} is {{id}}</h1>
+<br/>
+
+<ion-list can-swipe="listCanSwipe">
+  <ion-item ng-repeat="location in locations track by $index" class="item item-thumbnail-left">
+    <cl-image public-id="{{location.thumbnail}}" class="display-image" format="jpg">
+      <cl-transformation height="100" width="100" crop="fill"/>
+    </cl-image>
+    <h2>{{location.name}}</h2>
+    <p>{{location.city}}, {{location.state}}</p>
+    <ion-option-button class="button-assertive">Delete</ion-option-button>
+  </ion-item>
+</ion-list>
