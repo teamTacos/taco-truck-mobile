@@ -2,12 +2,12 @@
   <ion-content>
 
     <ion-list can-swipe="listCanSwipe">
-      <ion-item ng-repeat="item in items track by $index" class="item item-thumbnail-left">
+      <ion-item ng-repeat="review in reviews track by $index" class="item item-thumbnail-left">
         <cl-image public-id="{{review.thumbnail}}" class="display-image" format="jpg">
           <cl-transformation height="100" width="100" crop="fill"/>
         </cl-image>
-        <h2>{{review.name}}</h2>
-        <p>{{item.description | limitTo:45}}</p>
+        <h2>{{review.rating}}</h2>
+        <p>{{review.description}}</p>
         <ion-option-button class="button-assertive">Delete</ion-option-button>
       </ion-item>
     </ion-list>

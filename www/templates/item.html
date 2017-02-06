@@ -2,7 +2,7 @@
   <ion-content>
 
     <ion-list can-swipe="listCanSwipe">
-      <ion-item ng-repeat="item in items track by $index" class="item item-thumbnail-left" href="#/tab/locations/{{location.id}}/items/{{item.id}}">
+      <ion-item ng-repeat="item in items track by $index" class="item item-thumbnail-left" href="#/tab/locations/{{item.location_id}}/items/{{item.id}}/reviews">
         <cl-image public-id="{{item.thumbnail}}" class="display-image" format="jpg">
           <cl-transformation height="100" width="100" crop="fill"/>
         </cl-image>

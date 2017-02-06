@@ -1,7 +1,7 @@
 <ion-view view-title="Locations">
   <ion-content>
     <ion-list can-swipe="listCanSwipe">
-      <ion-item ng-repeat="location in locations track by $index" class="item item-thumbnail-left" href="#/tab/locations/{{location.id}}">
+      <ion-item ng-repeat="location in locations track by $index" class="item item-thumbnail-left" href="#/tab/locations/{{location.id}}/items">
         <cl-image public-id="{{location.thumbnail}}" class="display-image" format="jpg">
           <cl-transformation height="100" width="100" crop="fill"/>
         </cl-image>

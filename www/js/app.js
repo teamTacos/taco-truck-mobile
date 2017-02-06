@@ -7,7 +7,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'cloudinary'])
 
-.constant('tacoTruckApiUrl', "http://localhost:3000/api/v1")
+// .constant('tacoTruckApiUrl', "http://localhost:3000/api/v1")
+.constant('tacoTruckApiUrl', "http://taco-truck.herokuapp.com/api/v1")
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -95,7 +96,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   })
 
   .state('tab.items',{
-    url: '/locations/:locationId',
+    url: '/locations/:locationId/items',
     views: {
       'tab-location': {
         templateUrl: 'templates/item.html',
@@ -104,15 +105,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
-    .state('tab.reviews',{
-      url: '/locations/:locationId/items/:itemId',
-      views: {
-        'tab-reviews': {
-          templateUrl: 'templates/review.html',
-          controller: 'ReviewCtrl'
-        }
+  .state('tab.reviews',{
+    url: '/locations/:locationId/items/:itemId/reviews',
+    views: {
+      'tab-location': {
+        templateUrl: 'templates/review.html',
+        controller: 'ReviewCtrl'
       }
-    });
+    }
+  });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');

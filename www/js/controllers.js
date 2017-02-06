@@ -42,8 +42,9 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ReviewCtrl', function($scope, $stateParams, Reviews){
-  Reviews.getByItemId($stateParams.locationId).success(function(data){
-    $scope.revies = data;
+  console.log('got reviews?');
+  Reviews.getByLocationItemId($stateParams.locationId, $stateParams.itemId).success(function(data){
+    $scope.reviews = data;
   })
 })
 

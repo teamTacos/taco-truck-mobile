@@ -68,7 +68,7 @@ angular.module('starter.services', [])
     getByLocationId: function(locationId) {
       return $http({
         method: 'GET',
-        url: tacoTruckApiUrl + '/locations/' + locationId
+        url: tacoTruckApiUrl + '/locations/' + locationId + '/items'
       });
     }
   }
@@ -76,10 +76,12 @@ angular.module('starter.services', [])
 
 .factory('Reviews', function($http, tacoTruckApiUrl){
   return {
-    getByLocationId: function(locationId, itemId) {
+    getByLocationItemId: function(locationId, itemId) {
+      console.log(locationId);
+      console.log(itemId);
       return $http({
         method: 'GET',
-        url: tacoTruckApiUrl + '/locations/' + locationId + '/items/' + itemId
+        url: tacoTruckApiUrl + '/locations/' + locationId + '/items/' + itemId + '/reviews'
       });
     }
   }
