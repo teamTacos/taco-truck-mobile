@@ -47,4 +47,40 @@ angular.module('starter.services', [])
       return null;
     }
   };
+})
+
+.factory('Locations', function($http, tacoTruckApiUrl){
+
+  return {
+    getAll: function() {
+      return $http({
+        method: 'GET',
+        url: tacoTruckApiUrl + '/locations'
+      });
+    }
+  }
+
+})
+
+.factory('Items', function($http, tacoTruckApiUrl){
+
+  return {
+    getByLocationId: function(locationId) {
+      return $http({
+        method: 'GET',
+        url: tacoTruckApiUrl + '/locations/' + locationId
+      });
+    }
+  }
+})
+
+.factory('Reviews', function($http, tacoTruckApiUrl){
+  return {
+    getByLocationId: function(locationId, itemId) {
+      return $http({
+        method: 'GET',
+        url: tacoTruckApiUrl + '/locations/' + locationId + '/items/' + itemId
+      });
+    }
+  }
 });

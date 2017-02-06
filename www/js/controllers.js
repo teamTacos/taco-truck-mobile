@@ -17,31 +17,34 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('LocationCtrl', function($scope, $stateParams, $http, tacoTruckApiUrl) {
-  console.log('things and stuff');
+.controller('LocationCtrl', function($scope, $stateParams, Locations) {
   $scope.location = 'some location';
   $scope.id = $stateParams.id;
   $scope.listCanSwipe = true;
 
-  $scope.getAllLocations = function() {
-    console.log('getting location information from ' + tacoTruckApiUrl);
-    $http({
-      method: 'GET',
-      url: tacoTruckApiUrl + '/locations'
-    })
-      .then(function(response) {
-        $scope.locations = response.data;
-        $scope.locations.forEach(function(location){
-          location.all_images.forEach(function(image){
-            if(image.location_banner === 1) {
-              location.thumbnail = image.cloudinary_id;
-            }
-          })
-        })
+  Locations.getAll().success(function(data){
+    $scope.locations = data;
+    $scope.locations.forEach(function(location){
+      location.all_images.forEach(function(image){
+        if(image.location_banner === 1) {
+          location.thumbnail = image.cloudinary_id;
+        }
       })
+    });
+  });
+})
 
-  };
-  $scope.getAllLocations();
+.controller('ItemCtrl', function($scope, $stateParams, Items){
+  console.log($stateParams);
+  Items.getByLocationId($stateParams.locationId).success(function(data){
+    $scope.items = data;
+  })
+})
+
+.controller('ReviewCtrl', function($scope, $stateParams, Reviews){
+  Reviews.getByItemId($stateParams.locationId).success(function(data){
+    $scope.revies = data;
+  })
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
