@@ -18,6 +18,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('LocationCtrl', function($scope, $stateParams, Locations, $ionicModal) {
+
   $scope.location = 'some location';
   $scope.id = $stateParams.id;
   $scope.listCanSwipe = true;
@@ -33,11 +34,12 @@ angular.module('starter.controllers', [])
     });
   });
 
-  $scope.createLocation = function(){
-    console.log($scope.location);
-    Locations.create($scope.location).success(function(response){
-      console.log(response)
-    })
+  $scope.createLocation = function(loc){
+    console.log('loc: ' + loc);
+    Locations.create(loc).success(function(response){
+      $scope.locations.push(response);
+    });
+    $scope.closeModal();
   };
 
   $ionicModal.fromTemplateUrl('add-location.html', {

@@ -7,8 +7,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'cloudinary'])
 
-// .constant('tacoTruckApiUrl', "http://localhost:3000/api/v1")
-.constant('tacoTruckApiUrl', "http://taco-truck.herokuapp.com/api/v1")
+.constant('tacoTruckApiUrl', "http://localhost:3000/api/v1")
+// .constant('tacoTruckApiUrl', "http://taco-truck.herokuapp.com/api/v1")
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -116,6 +116,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/locations');
 
 });

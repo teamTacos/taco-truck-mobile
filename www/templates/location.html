@@ -2,7 +2,8 @@
   <ion-content>
     <button class="button button-full button-positive" ng-click="openModal()">Add Location</button>
     <ion-list can-swipe="listCanSwipe">
-      <ion-item ng-repeat="location in locations track by $index" class="item item-thumbnail-left" href="#/tab/locations/{{location.id}}/items">
+      <ion-item ng-repeat="location in locations track by $index" class="item item-thumbnail-left"
+                href="#/tab/locations/{{location.id}}/items">
         <cl-image public-id="{{location.thumbnail}}" class="display-image" format="jpg">
           <cl-transformation height="100" width="100" crop="fill"/>
         </cl-image>
@@ -11,83 +12,50 @@
         <ion-option-button class="button-assertive">Delete</ion-option-button>
       </ion-item>
     </ion-list>
-    <div class="buttons">
-      <button class="button" ng-click="openModal()">Left Button</button>
-    </div>
+
+    <script id="add-location.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar>
+          <h1 class="title">Add Location</h1>
+        </ion-header-bar>
+        <ion-content class="padding">
+          <!--<form ng-submit="submitForm()" class="form-horizontal">-->
+          <div class="list">
+
+            <label class="item item-input">
+              <input type="text" placeholder="Name" ng-model="loc.name">
+            </label>
+
+            <label class="item item-input">
+              <input type="text" placeholder="City" ng-model="loc.city">
+            </label>
+
+            <label class="item item-input">
+              <input type="text" placeholder="State" ng-model="loc.state">
+            </label>
+
+            <label class="item item-input">
+              <input type="text" placeholder="Country" ng-model="loc.country">
+            </label>
+
+            <label class="item item-input">
+              <textarea class="form-control" rows="3" ng-model="loc.description"
+                        placeholder="Description..."></textarea>
+            </label>
+
+            <button type="button" class="button button-positive" data-dismiss="modal" ng-click="closeModal()">Cancel
+            </button>
+            <button type="button" class="button button-positive" data-toggle="modal" id="submit-location"
+                    ng-click="createLocation(loc)">Add
+            </button>
+            <!--</form>-->
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+
   </ion-content>
 </ion-view>
-
-<script id="add-location.html" type="text/ng-template">
-  <ion-modal-view>
-  <ion-header-bar>
-  <h1 class="title">Add Location</h1>
-  </ion-header-bar>
-  <ion-content class="padding">
-    <!--<form ng-submit="submitForm()" class="form-horizontal">-->
-    <div class="list">
-    <label class="item item-input">
-    <span class="input-label">Name:</span>
-  <input type="text" ng-model="location.name">
-    </label>
-
-    <label class="item item-input">
-    <span class="input-label">CityName:</span>
-  <input type="text" ng-model="location.city">
-    </label>
-
-    <label class="item item-input">
-    <span class="input-label">State:</span>
-  <input type="text" ng-model="location.state">
-    </label>
-
-    <label class="item item-input">
-    <span class="input-label">Country:</span>
-  <input type="text" ng-model="location.country">
-    </label>
-
-    <label class="item item-input">
-    <span class="input-label">Description:</span>
-  <textarea class="form-control" rows="3" ng-model="location.description"
-  placeholder="Description..."></textarea>
-    </label>
-
-    <label class="input-label" for="item-image">Image:</label>
-  <div class="col-sm-8">
-    <div class="upload_button_holder">
-    <div><a href="#" class="upload_button" ngf-select="uploadFiles($files)" id="item-image">Add Photo</a></div>
-  <div class="preview" ng-repeat="file in files">
-    <h3>{{f.$error}} {{f.$errorParam}}</h3>
-  <!--<div class="progress-bar">-->
-  <!--<div class="progress" style="width: {{file.progress}}%" ng-init="progress=0"></div>-->
-    <!--</div>-->
-    <div class="form_line">
-    <div class="form_controls">
-    <div class="preview">
-    <img ngf-src="file.result.url || file">
-    <input type="text" style="display:none;" name="thumbnail" id="location-thumbnail"
-  ng-value="file.result.public_id">
-    </div>
-    </div>
-    </div>
-    <!--<div class="info">-->
-    <!--<table>-->
-    <!--<tr ng-repeat="(key, value) in file.result">-->
-    <!--<td> {{key}} </td> <td> {{ value }} </td>-->
-  <!--</tr>-->
-  <!--</table>-->
-  <!--</div>-->
-  </div>
-  </div>
-  </div>
-
-  <button type="button" class="button button-positive" data-dismiss="modal" ng-click="closeModal()">Cancel</button>
-    <button type="button" class="button button-positive" data-toggle="modal" id="submit-location" ng-click="createLocation()">Add</button>
-    <!--</form>--></div>
-    </ion-content>
-    </ion-modal-view>
-</script>
-
-
 
 
 
