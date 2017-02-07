@@ -40,7 +40,7 @@ angular.module('starter.controllers', [])
     })
   };
 
-  $ionicModal.fromTemplateUrl('/templates/modals/add-location.html', {
+  $ionicModal.fromTemplateUrl('add-location.html', {
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal) {
@@ -71,7 +71,7 @@ angular.module('starter.controllers', [])
     $scope.items = data;
   });
 
-  $ionicModal.fromTemplateUrl('/templates/modals/add-item.html', {
+  $ionicModal.fromTemplateUrl('add-item.html', {
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal) {
@@ -102,7 +102,7 @@ angular.module('starter.controllers', [])
     $scope.reviews = data;
   });
 
-  $ionicModal.fromTemplateUrl('/templates/modals/add-review.html', {
+  $ionicModal.fromTemplateUrl('add-review.html', {
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal) {
