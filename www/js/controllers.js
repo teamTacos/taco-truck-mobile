@@ -17,7 +17,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('LocationCtrl', function($scope, $stateParams, Locations) {
+.controller('LocationCtrl', function($scope, $stateParams, Locations, $ionicModal) {
   $scope.location = 'some location';
   $scope.id = $stateParams.id;
   $scope.listCanSwipe = true;
@@ -32,20 +32,100 @@ angular.module('starter.controllers', [])
       })
     });
   });
+
+  $scope.createLocation = function(){
+    console.log($scope.location);
+    Locations.create($scope.location).success(function(response){
+      console.log(response)
+    })
+  };
+
+  $ionicModal.fromTemplateUrl('/templates/modals/add-location.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+  // Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+  });
 })
 
-.controller('ItemCtrl', function($scope, $stateParams, Items){
-  console.log($stateParams);
+.controller('ItemCtrl', function($scope, $stateParams, Items, $ionicModal){
   Items.getByLocationId($stateParams.locationId).success(function(data){
     $scope.items = data;
-  })
+  });
+
+  $ionicModal.fromTemplateUrl('/templates/modals/add-item.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+  // Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+  });
 })
 
-.controller('ReviewCtrl', function($scope, $stateParams, Reviews){
-  console.log('got reviews?');
+.controller('ReviewCtrl', function($scope, $stateParams, Reviews, $ionicModal){
   Reviews.getByLocationItemId($stateParams.locationId, $stateParams.itemId).success(function(data){
     $scope.reviews = data;
-  })
+  });
+
+  $ionicModal.fromTemplateUrl('/templates/modals/add-review.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+  // Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+  });
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {

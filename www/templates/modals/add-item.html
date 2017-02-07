@@ -1,0 +1,52 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Add Item</h1>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <!--<form ng-submit="submitForm()" class="form-horizontal">-->
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">Name:</span>
+        <input type="text" ng-model="item.name">
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">Description:</span>
+        <textarea class="form-control" rows="3" ng-model="item.description"
+                  placeholder="Description..."></textarea>
+      </label>
+
+      <label class="input-label" for="item-image">Image:</label>
+      <div class="col-sm-8">
+        <div class="upload_button_holder">
+          <div><a href="#" class="upload_button" ngf-select="uploadFiles($files)" id="item-image">Add Photo</a></div>
+          <div class="preview" ng-repeat="file in files">
+            <h3>{{f.$error}} {{f.$errorParam}}</h3>
+            <!--<div class="progress-bar">-->
+            <!--<div class="progress" style="width: {{file.progress}}%" ng-init="progress=0"></div>-->
+            <!--</div>-->
+            <div class="form_line">
+              <div class="form_controls">
+                <div class="preview">
+                  <img ngf-src="file.result.url || file">
+                  <input type="text" style="display:none;" name="thumbnail"
+                         ng-value="file.result.public_id">
+                </div>
+              </div>
+            </div>
+            <!--<div class="info">-->
+            <!--<table>-->
+            <!--<tr ng-repeat="(key, value) in file.result">-->
+            <!--<td> {{key}} </td> <td> {{ value }} </td>-->
+            <!--</tr>-->
+            <!--</table>-->
+            <!--</div>-->
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="button button-positive" data-dismiss="modal" ng-click="closeModal()">Cancel</button>
+      <button type="button" class="button button-positive" data-toggle="modal" id="submit-location" ng-click="createLocation()">Add</button>
+      <!--</form>--></div>
+  </ion-content>
+</ion-modal-view>

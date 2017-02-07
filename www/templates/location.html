@@ -1,5 +1,6 @@
 <ion-view view-title="Locations">
   <ion-content>
+    <button class="button button-full button-positive" ng-click="openModal()">Add Location</button>
     <ion-list can-swipe="listCanSwipe">
       <ion-item ng-repeat="location in locations track by $index" class="item item-thumbnail-left" href="#/tab/locations/{{location.id}}/items">
         <cl-image public-id="{{location.thumbnail}}" class="display-image" format="jpg">
@@ -10,6 +11,13 @@
         <ion-option-button class="button-assertive">Delete</ion-option-button>
       </ion-item>
     </ion-list>
+    <div class="buttons">
+      <button class="button" ng-click="openModal()">Left Button</button>
+    </div>
   </ion-content>
 </ion-view>
+
+
+
+
 

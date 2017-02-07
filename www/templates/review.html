@@ -1,6 +1,6 @@
 <ion-view view-title="Reviews">
   <ion-content>
-
+    <button class="button button-full button-positive" ng-click="openModal()">Add Review</button>
     <ion-list can-swipe="listCanSwipe">
       <ion-item ng-repeat="review in reviews track by $index" class="item item-thumbnail-left">
         <cl-image public-id="{{review.thumbnail}}" class="display-image" format="jpg">

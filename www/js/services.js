@@ -57,8 +57,18 @@ angular.module('starter.services', [])
         method: 'GET',
         url: tacoTruckApiUrl + '/locations'
       });
+    },
+    create: function(location){
+      return $http({
+        method: 'POST',
+        url: tacoTruckApiUrl + '/locations',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: location
+      })
     }
-  }
+  };
 
 })
 
@@ -71,7 +81,7 @@ angular.module('starter.services', [])
         url: tacoTruckApiUrl + '/locations/' + locationId + '/items'
       });
     }
-  }
+  };
 })
 
 .factory('Reviews', function($http, tacoTruckApiUrl){
@@ -84,5 +94,5 @@ angular.module('starter.services', [])
         url: tacoTruckApiUrl + '/locations/' + locationId + '/items/' + itemId + '/reviews'
       });
     }
-  }
+  };
 });
